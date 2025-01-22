@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfume Preference Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        form {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+        }
+        button {
+            background-color: #5A9;
+            color: white;
+            padding: 10px;
+            border: none;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #48C;
+        }
+    </style>
+</head>
+<body>
+    <h1>Perfume Preference Form</h1>
+    <form action="https://api.web3forms.com/submit" method="POST">
+        <!-- Web3Forms Access Key -->
+        <input type="hidden" name="access_key" value="201eae9b-a526-4084-9275-4a4c12142df0">
+
+        <!-- Required fields -->
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="addres">addres:</label>
+        <input type="addres" id="addres" name="addres" required>
+        
+        <label for="country">country:</label>
+        <textarea id="country" name="country"  name="country" required></textarea>
+
+        <label for="city">city:</label>
+        <textarea id="city" name="city"  name="city" required></textarea>
+
+        <label for="commenT">Your Product:</label>
+        <textarea id="comments" name="comments" name="city" required></textarea>
+
+
+        <!-- Redirect after submission (optional) -->
+        <input type="hidden" name="redirect" value="">
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Example</title>
+    <style>
+        .download-button {
+            padding: 10px 20px;
+            background-color: #5a9;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="download-button" download>go back</a>
+</body>
+</html>
+
