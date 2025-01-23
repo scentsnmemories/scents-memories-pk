@@ -1,0 +1,329 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velora</title>
+    <style>
+        /* Universal Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+            background: #f8f9fa;
+        }
+
+        header {
+            background: linear-gradient(90deg, #ffcc00, #ecbe25);
+            color: #000;
+            text-align: center;
+            padding: 1em 0;
+        }
+
+        header h1 {
+            font-family: 'Brush Script MT', sans-serif;
+            font-size: 2.8rem;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+            flex-wrap: wrap;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #575757;
+        }
+
+        .menu-toggle {
+            display: none;
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .product {
+            background-color: white;
+            border-radius: 12px;
+            text-align: center;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .product img {
+            max-width: 100%; /* Ensure images don’t overflow */
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .product h3 {
+            font-size: 1.2rem;
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .price {
+            font-size: 1rem;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        .description {
+            font-size: 0.9rem;
+            color: #555;
+            margin: 10px 0;
+        }
+
+        .buy-btn {
+            background: linear-gradient(90deg, #ff5722, #e64a19);
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .buy-btn:hover {
+            background: linear-gradient(90deg, #e64a19, #d84315);
+        }
+
+        footer {
+            background: linear-gradient(90deg, #ecbe25, #ffcc00);
+            text-align: center;
+            padding: 1em;
+        }
+
+        footer p {
+            color: #333;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            nav {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav.show {
+                display: flex;
+            }
+
+            nav a {
+                padding: 10px;
+                font-size: 14px;
+                width: 100%; /* Ensure full width links on small screens */
+            }
+
+            .gallery {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+        }
+                /* Search Bar Styles */
+                .search-container {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 100;
+        }
+        .search-container input {
+            padding: 8px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Scents N Memories</h1>
+    </header>
+
+        <!-- Search Bar -->
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search perfumes..." oninput="searchProducts()">
+    </div>
+
+    <div class="menu-toggle" onclick="toggleMenu()">☰ Menu</div>
+    <nav id="navMenu">
+        <a href="index.html">Home</a>
+        <a href="female perfume.html">Female Perfume</a>
+        <a href="male perfume.html">Male Perfume</a>
+        <a href="unisex perfume.html">Unisex Perfume</a>
+        <a href="newly added.html">Newly Added</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <main>
+        <div class="gallery" id="gallery"></div>
+        <div id="cartContainer" class="cart">
+            <h2>Shopping Cart</h2>
+            <ul id="cartItems"></ul>
+            <div id="cartTotal"></div>
+            <button class="buy-btn" onclick="placeOrder()">Place Order</button>
+            <button class="buy-btn" onclick="copyCart()">Copy All</button>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; Contact us for help.</p>
+    </footer>
+
+    <script>
+        const cart = [];
+        const products = [
+            { name: 'Product 1', price: 19.99, description: 'This is a description of product 1.', img: '' },
+            { name: 'Product 2', price: 29.99, description: 'This is a description of product 2.', img: 'https://via.placeholder.com/150' },
+            { name: 'Product 3', price: 9.99, description: 'This is a description of product 3.', img: 'https://via.placeholder.com/150' },
+            { name: 'Product 4', price: 49.99, description: 'This is a description of product 4.', img: 'https://via.placeholder.com/150' },
+            { name: 'Product 5', price: 14.99, description: 'This is a description of product 5.', img: 'https://via.placeholder.com/150' },
+            { name: 'Product 6', price: 19.99, description: 'This is a description of product 6.', img: 'https://via.placeholder.com/150' },
+            { name: 'Product 7', price: 29.99, description: 'This is a description of product 7.', img: 'https://via.placeholder.com/150' },
+            { name: 'Product 8', price: 9.99, description: 'This is a description of product 8.', img: 'https://via.placeholder.com/150' },
+            { name: 'Product 9', price: 49.99, description: 'This is a description of product 9.', img: 'https://via.placeholder.com/150' },
+            { name: 'Product 10', price: 14.99, description: 'This is a description of product 10.', img:''},
+    ]
+
+    function addToCart(productName, productPrice) {
+            cart.push({ name: productName, price: parseFloat(productPrice) });
+            updateCartDisplay();
+        }
+
+        function updateCartDisplay() {
+            const cartContainer = document.getElementById('cartContainer');
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+
+            cartContainer.style.display = 'block';
+            cartItems.innerHTML = '';
+            let total = 0;
+
+            cart.forEach((item) => {
+                const li = document.createElement('li');
+                li.innerHTML = `${item.name} - $${item.price.toFixed(2)}`;
+                cartItems.appendChild(li);
+                total += item.price;
+            });
+
+            cartTotal.textContent = `Total: $${total.toFixed(2)}`;
+        }
+
+        function placeOrder() {
+            if (cart.length === 0) {
+                alert('Your cart is empty. Please add items to your cart before placing an order.');
+                return;
+            }
+
+            let orderSummary = 'Your Order:\n';
+            cart.forEach((item) => {
+                orderSummary += `${item.name} - $${item.price.toFixed(2)}\n`;
+            });
+            orderSummary += `\nTotal: $${cart.reduce((sum, item) => sum + item.price, 0).toFixed(2)}\n\nThank you for your order!`;
+
+            alert(orderSummary);
+
+            cart.length = 0;
+            updateCartDisplay();
+            document.getElementById('cartContainer').style.display = 'none';
+
+            window.location.href = 'form.html';
+        }
+
+        function copyCart() {
+            if (cart.length === 0) {
+                alert("The cart is empty. Nothing to copy.");
+                return;
+            }
+
+            let cartText = "Shopping Cart Items:\n";
+            cart.forEach((item) => {
+                cartText += `${item.name} - $${item.price.toFixed(2)}\n`;
+            });
+            cartText += `\nTotal: $${cart.reduce((sum, item) => sum + item.price, 0).toFixed(2)}`;
+
+            navigator.clipboard.writeText(cartText)
+                .then(() => {
+                    alert("Cart copied to clipboard.");
+                })
+                .catch((err) => {
+                    console.error("Failed to copy:", err);
+                    alert("Failed to copy cart contents. Please try again.");
+                });
+        }
+
+        function searchProducts() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const filteredProducts = products.filter(product => product.name.toLowerCase().includes(query));
+
+            // Clear the current gallery
+            const gallery = document.getElementById('gallery');
+            gallery.innerHTML = '';
+
+            // Display filtered products
+            filteredProducts.forEach((product) => {
+                const productDiv = document.createElement('div');
+                productDiv.className = 'product';
+                productDiv.innerHTML = `
+                    <img src="${product.img}" alt="${product.name}">
+                    <p>${product.name}</p>
+                    <p class="price">$${product.price}</p>
+                    <p class="description">${product.description}</p>
+                    <button class="buy-btn" onclick="addToCart('${product.name}', ${product.price})">Order Now</button>
+                `;
+                gallery.appendChild(productDiv);
+            });
+        }
+
+        // Initially display all products
+        searchProducts();
+    </script>
+</body>
+</html>
+
