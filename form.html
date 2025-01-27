@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfume Preference Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        form {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #5A9;
+            color: white;
+            padding: 10px;
+            border: none;
+            margin-top: 15px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #48C;
+        }
+        .go-back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #5a9;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .go-back-button:hover {
+            background-color: #48C;
+        }
+    </style>
+</head>
+<body>
+    <h1>Perfume Preference Form</h1>
+    <form action="https://api.web3forms.com/submit" method="POST">
+        <!-- Web3Forms Access Key -->
+        <input type="hidden" name="access_key" value="097a2272-3598-4aef-a088-82e5b9aa82e3">
+
+        <!-- Required fields -->
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" required>
+        
+        <label for="country">Country:</label>
+        <textarea id="country" name="country" required></textarea>
+
+        <label for="city">City:</label>
+        <textarea id="city" name="city" required></textarea>
+
+        <label for="comments">Your Product:</label>
+        <textarea id="comments" name="comments" required></textarea>
+
+        <!-- Redirect after submission (optional) -->
+        <input type="hidden" name="redirect" value="">
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <a href="javascript:history.back()" class="go-back-button">Go Back</a>
+</body>
+</html>
