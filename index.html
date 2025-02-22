@@ -371,12 +371,12 @@
 
             cart.forEach((item) => {
                 const li = document.createElement('li');
-                li.innerHTML = `${item.name} - ${item.price.toFixed(2)}`;
+                li.innerHTML = `${item.name} - $${item.price.toFixed(2)}`;
                 cartItems.appendChild(li);
                 total += item.price;
             });
 
-            cartTotal.textContent = `Total: ${total.toFixed(2)}`;
+            cartTotal.textContent = `Total: $${total.toFixed(2)}`;
         }
 
         function placeOrder() {
@@ -385,58 +385,68 @@
                 return;
             }
 
-            alert('Your order has been placed.');
+            let orderSummary = 'Your Order:\n';
+            cart.forEach((item) => {
+                orderSummary += `${item.name} - $${item.price.toFixed(2)}\n`;
+            });
+            orderSummary += `\nTotal: $${cart.reduce((sum, item) => sum + item.price, 0).toFixed(2)}\n\nThank you for your order!`;
+
+            alert(orderSummary);
+
             cart.length = 0;
             updateCartDisplay();
+            document.getElementById('cartContainer').style.display = 'none';
+
+            window.location.href = 'form.html';
         }
 
         function copyCart() {
             if (cart.length === 0) {
-                alert('Your cart is empty. Nothing to copy.');
+                alert("The cart is empty. Nothing to copy.");
                 return;
             }
 
-            const cartCopy = cart.map(item => `${item.name} - ${item.price.toFixed(2)}`).join('\n');
-            navigator.clipboard.writeText(cartCopy);
-            alert('Cart copied to clipboard!');
-        }
+            let cartText = "Shopping Cart Items:\n";
+            cart.forEach((item) => {
+                cartText += `${item.name} - $${item.price.toFixed(2)}\n`;
+            });
+            cartText += `\nTotal: $${cart.reduce((sum, item) => sum + item.price, 0).toFixed(2)}`;
 
-        function toggleMenu() {
-            const navMenu = document.getElementById('navMenu');
-            navMenu.classList.toggle('show');
+            navigator.clipboard.writeText(cartText)
+                .then(() => {
+                    alert("Cart copied to clipboard.");
+                })
+                .catch((err) => {
+                    console.error("Failed to copy:", err);
+                    alert("Failed to copy cart contents. Please try again.");
+                });
         }
 
         function searchProducts() {
-            const searchInput = document.getElementById('searchInput');
-            const filter = searchInput.value.toUpperCase();
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const filteredProducts = products.filter(product => product.name.toLowerCase().includes(query));
+
+            // Clear the current gallery
             const gallery = document.getElementById('gallery');
-            
             gallery.innerHTML = '';
 
-            const filteredProducts = products.filter(product =>
-                product.name.toUpperCase().includes(filter) ||
-                product.description.toUpperCase().includes(filter)
-            );
-
-            filteredProducts.forEach(product => {
-                const productDiv = document.createElement('div');
-                productDiv.classList.add('product');
-                
-                productDiv.innerHTML = `
+            // Display filtered products
+            filteredProducts.forEach((product) => {
+                const productElement = document.createElement('div');
+                productElement.className = 'product';
+                productElement.innerHTML = `
                     <img src="${product.img}" alt="${product.name}">
                     <h3>${product.name}</h3>
                     <p class="description">${product.description}</p>
-                    <p class="price">${product.price.toFixed(2)}</p>
+                    <p class="price">$${product.price.toFixed(2)}</p>
                     <button class="buy-btn" onclick="addToCart('${product.name}', ${product.price})">Add to Cart</button>
                 `;
-                
-                gallery.appendChild(productDiv);
+                gallery.appendChild(productElement);
             });
         }
 
-        window.onload = function() {
-            searchProducts();  // Display all products initially
-        }
+        // Initial product load
+        searchProducts();
     </script>
 </body>
 </html>
