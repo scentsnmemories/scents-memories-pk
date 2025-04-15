@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f9f9f9;
+    }
+
+    header {
+      background-color: #4CAF50;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .menu-toggle {
+      display: none;
+      background-color: #333;
+      color: white;
+      font-size: 24px;
+      padding: 14px 20px;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    nav {
+      background-color: #333;
+    }
+
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: white;
+      padding: 14px 20px;
+      text-decoration: none;
+    }
+
+    .nav-links a:hover {
+      background-color: #575757;
+    }
+
+    main {
+      padding: 2rem;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      width: 100%;
+    }
+
+    form {
+      max-width: 600px;
+      margin: 2rem auto;
+      padding: 1rem;
+      background-color: white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 8px;
+    }
+
+    form label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+
+    form input, form textarea {
+      width: 100%;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    form button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    form button:hover {
+      background-color: #45a049;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    ul li {
+      margin: 0.5rem 0;
+    }
+
+    .social-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 1rem;
+    }
+
+    .social-buttons a button {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 4px;
+      color: white;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .social-buttons img {
+      width: 20px;
+      height: 20px;
+    }
+
+    .facebook { background-color: #3b5998; }
+    .twitter { background-color: #1da1f2; }
+    .tiktok { background-color: #000000; }
+    .youtube { background-color: crimson; }
+
+    iframe {
+      width: 100%;
+      height: 300px;
+      margin-top: 2rem;
+      border: none;
+    }
+
+    /* MEDIA QUERY for responsiveness */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .nav-links a {
+        border-top: 1px solid #444;
+        text-align: center;
+        width: 100%;
+        padding: 12px;
+      }
+
+      main {
+        padding: 1rem;
+      }
+
+      form {
+        margin: 1rem;
+      }
+
+      .social-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      iframe {
+        height: 250px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Contact Us</h1>
+  </header>
+
+  <nav>
+    <div class="menu-toggle" onclick="toggleMenu()">☰ Menu</div>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="female perfume.html">Female Perfume</a>
+      <a href="male perfume.html">Male Perfume</a>
+      <a href="unisex perfume.html">Unisex Perfume</a>
+      <a href="newly perfume.html">Newly Added</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <main>
+    <p>We'd love to hear from you! Please fill out the form below or reach us at:</p>
+    <ul>
+      <li><strong>Phone:</strong> +92310239262</li>
+      <li><strong>Email:</strong> contact@yourcompany.com</li>
+      <li><strong>Address:</strong> 123 Business Road, Business City, BC 12345</li>
+    </ul>
+
+    <h3>Business Hours</h3>
+    <p>24 hours live</p>
+
+    <h3>Send Us a Message</h3>
+    <form action="https://api.web3forms.com/submit" method="post">
+      <input type="hidden" name="access_key" value="097a2272-3598-4aef-a088-82e5b9aa82e3">
+
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="country">Country:</label>
+      <input type="text" id="country" name="country" required>
+
+      <label for="city">City:</label>
+      <input type="text" id="city" name="city">
+
+      <label for="number">Number:</label>
+      <textarea id="number" name="number" required></textarea>
+
+      <label for="Problem">Problem:</label>
+      <textarea id="Problem" name="Problem" rows="4" required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+
+    <h3>Follow Us</h3>
+    <div class="social-buttons">
+      <a href="https://www.facebook.com/profile.php?id=61571738202385" target="_blank">
+        <button class="facebook">
+          <img src="https://img.icons8.com/color/48/facebook-new.png" alt="Facebook">
+          Facebook
+        </button>
+      </a>
+      <a href="https://twitter.com/yourcompany" target="_blank">
+        <button class="twitter">
+          <img src="https://img.icons8.com/color/48/twitter--v1.png" alt="Twitter">
+          Twitter
+        </button>
+      </a>
+      <a href="https://www.tiktok.com/@scentsnmemories485?lang=en" target="_blank">
+        <button class="tiktok">
+          <img src="https://img.icons8.com/ios-filled/50/ffffff/tiktok.png" alt="TikTok">
+          TikTok
+        </button>
+      </a>
+      <a href="https://www.youtube.com/channel/UC0Vu050m-VzsFZq5fxhgGwg" target="_blank">
+        <button class="youtube">
+          <img src="https://img.icons8.com/color/48/youtube-play.png" alt="YouTube">
+          YouTube
+        </button>
+      </a>
+    </div>
+
+    <iframe src="https://www.google.com/maps/embed?..." allowfullscreen loading="lazy"></iframe>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Scents n Memories. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById("navLinks");
+      nav.classList.toggle("show");
+    }
+  </script>
+
+</body>
+</html>

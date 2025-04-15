@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+
+        header {
+            background-color: #ecbe25;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        /* Toggle button for mobile nav */
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            color: white;
+            padding: 14px 20px;
+            cursor: pointer;
+            background-color: #333;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #333;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .nav-links a:hover {
+            background-color: #575757;
+        }
+
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .about-section {
+            background-color: #ffffff;
+            padding: 40px;
+            margin: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: left;
+        }
+
+        .about-section h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .about-section p {
+            line-height: 1.6;
+            color: #666;
+        }
+
+        .team-section {
+            background-color: #f9f9f9;
+            padding: 40px;
+            margin: 20px;
+            border-radius: 8px;
+        }
+
+        .team-section h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .team-member {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .team-member img {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            margin-right: 20px;
+            margin-bottom: 10px;
+        }
+
+        .team-member div {
+            text-align: left;
+            flex: 1;
+        }
+
+        .team-member h3 {
+            margin: 0;
+            color: #333;
+        }
+
+        .team-member p {
+            margin: 5px 0;
+            color: #666;
+        }
+
+        footer {
+            background-color: #ecbe25;
+            text-align: center;
+            padding: 10px 0;
+            width: 100%;
+            position: relative;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .nav-links a {
+                border-top: 1px solid #444;
+                padding: 12px;
+            }
+
+            .team-member {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .team-member div {
+                text-align: center;
+            }
+
+            .about-section,
+            .team-section {
+                margin: 10px;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>VELORA</h1>
+    </header>
+
+    <nav>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+        <div class="nav-links" id="navLinks">
+            <a href="index.html">Home</a>
+            <a href="female perfume.html">Female Perfume</a>
+            <a href="male perfume.html">Male Perfume</a>
+            <a href="unisex perfume.html">Unisex Perfume</a>
+            <a href="newly perfume.html">Newly Added</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
+
+    <main>
+        <div class="about-section">
+            <h2>Our Story</h2>
+            <p>Welcome to Scents N Memories, where passion meets fragrance. Since our inception, we've been dedicated to bringing the finest scents to our customers. Our journey began with a simple mission: to craft unique perfumes that evoke memories and emotions. Today, we are proud to offer a diverse range of fragrances that cater to every personality and occasion.</p>
+        </div>
+
+        <div class="team-section">
+            <h2>Meet Our Team</h2>
+            <div class="team-member">
+                <img src="path-to-team-member1.jpg" alt="Team Member 1">
+                <div>
+                    <h3>Usman Jellani</h3>
+                    <p>Founder & CEO</p>
+                    <p>Usman's vision and leadership have been the cornerstone of Scents N Memories' success. With over a decade of experience in the fragrance industry, he is committed to delivering excellence in every bottle.</p>
+                </div>
+            </div>
+            <div class="team-member">
+                <img src="path-to-team-member2.jpg" alt="Team Member 2">
+                <div>
+                    <h3>Usman Jellani</h3>
+                    <p>Chief Perfumer</p>
+                    <p>Usman's expertise in blending and creating unique scents has earned her a reputation as one of the top perfumers in the industry. Her creativity and passion for fragrance shine through in every product.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; Contact us for help</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const nav = document.getElementById('navLinks');
+            nav.classList.toggle('show');
+        }
+    </script>
+</body>
+</html>
